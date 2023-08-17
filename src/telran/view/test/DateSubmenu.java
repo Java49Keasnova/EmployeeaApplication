@@ -15,22 +15,22 @@ public class DateSubmenu extends Menu {
 
 	}
 
-	public static Item[] getDateItems() {
+	public  Item[] getDateItems() {
 		Item[] items = { 
 				Item.of("Date after a given number of days", io -> calculate(io, LocalDate::plusDays)),
 				Item.of("Date before a given number of days", io -> calculate(io, LocalDate::minusDays)),
-				Item.of("Days between two dates", DateSubmenu::calculateBetween),
+				Item.of("Days between two dates", io -> calculateBetween(io)),
 				Item.ofExit() };
 		return items;
 	}
 
-	private static void calculate(InputOutput io, BiFunction<LocalDate, Long, LocalDate> action) {
+	private  void calculate(InputOutput io, BiFunction<LocalDate, Long, LocalDate> action) {
 		LocalDate first = io.readDate("Enter date in format yyyy-mm-dd", "Must be date in ISO format");
 		long second = io.readLong("Count of days", "Must be number");
 		io.writeLine(action.apply(first, second));
 	}
 
-	private static void calculateBetween(InputOutput io) {
+	private  void calculateBetween(InputOutput io) {
 		LocalDate first = io.readDate("Enter date in format yyyy-mm-dd", "Must be date in ISO format");
 		LocalDate second = io.readDate("Enter date in format yyyy-mm-dd", "Must be date in ISO format");
 		io.writeLine(ChronoUnit.DAYS.between(first, second));
