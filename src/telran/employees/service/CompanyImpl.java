@@ -129,7 +129,6 @@ public class CompanyImpl implements Company {
 
         return employeesSalary.subMap(salaryFrom, true, salaryTo, true).values().stream()
                 .flatMap(col -> col.stream().sorted((empl1, empl2) -> Long.compare(empl1.id(), empl2.id())))
-
                 .toList();
     }
 
