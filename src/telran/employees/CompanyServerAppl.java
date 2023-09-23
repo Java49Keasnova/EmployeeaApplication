@@ -5,7 +5,8 @@ import java.io.IOException;
 import telran.employees.service.*;
 import telran.net.TcpServer;
 
-public class CompanyServerAppl {
+public class
+CompanyServerAppl {
 
 	private static final String DEFAULT_FILE_NAME = "employees.data";
 	private static String fileName ;
